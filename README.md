@@ -2,8 +2,6 @@
 
 This is a modified version of the original [UMBRAE](https://github.com/weihaox/UMBRAE) repository designed for easy setup and cross-compatibility across different computing environments.
 
-## Key Modifications
-
 - **Cross-platform compatibility**: Works on HPCs, Google Colab, and consumer GPUs
 - **16GB VRAM target**: Optimized for consumer hardware with memory-efficient implementations
 - **Easy setup**: Automated environment configuration for different platforms
@@ -12,7 +10,7 @@ This is a modified version of the original [UMBRAE](https://github.com/weihaox/U
 ## Quick Start
 
 ### Google Colab
-1. Clone this repository: `!git clone https://github.com/your-username/umbrae-test.git`
+1. Clone this repository: `!git clone https://github.com/TachyonGun/umbrae-test.git`
 2. Run the setup cell from `colab_setup.py`
 3. Download data and checkpoints as needed
 
