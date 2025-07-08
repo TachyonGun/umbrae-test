@@ -1,0 +1,8 @@
+[
+  {
+    "sample": 1,
+    "response": "The answer is yes.",
+    "generation_time": 0.4083709716796875,
+    "prompt_type": "caption"
+  }
+]

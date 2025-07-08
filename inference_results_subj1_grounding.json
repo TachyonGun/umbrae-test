@@ -1,0 +1,8 @@
+[
+  {
+    "sample": 1,
+    "response": "The answer is yes but it's not the case for the band.",
+    "generation_time": 0.8124089241027832,
+    "prompt_type": "grounding"
+  }
+]

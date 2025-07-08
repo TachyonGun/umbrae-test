@@ -1,0 +1,15 @@
+{
+  "snapshot": "POPULATED_FROM_SETTINGS",
+  "install": "cd umbrae && conda create -n brainx python=3.8 -y && eval \"$(conda shell.bash hook)\" && conda activate brainx && pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu && pip install -r requirements.txt && pip install fvcore iopath pyembree cython && chmod +x download_data.sh download_checkpoint.sh && echo 'Environment setup complete. CPU PyTorch installed for background agents. Use download scripts if you need data/checkpoints.'",
+  "start": "eval \"$(conda shell.bash hook)\" && conda activate brainx",
+  "terminals": [
+    {
+      "name": "UMBRAE Development",
+      "command": "cd umbrae && eval \"$(conda shell.bash hook)\" && conda activate brainx && echo 'UMBRAE environment ready. Available commands:' && echo '- python inference.py (for inference)' && echo '- python train.py (for training)' && echo '- bash download_data.sh (download NSD dataset)' && echo '- bash download_checkpoint.sh (download pretrained models)'"
+    },
+    {
+      "name": "Jupyter Server",
+      "command": "cd umbrae && eval \"$(conda shell.bash hook)\" && conda activate brainx && pip install jupyter ipykernel && python -m ipykernel install --user --name brainx --display-name 'UMBRAE (brainx)' && jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root"
+    }
+  ]
+} 
