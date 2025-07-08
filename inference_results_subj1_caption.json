@@ -1,8 +1,8 @@
 [
   {
     "sample": 1,
-    "response": "The answer is yes.",
-    "generation_time": 0.748204231262207,
+    "response": "A group of people at a table with food.",
+    "generation_time": 1.002746343612671,
     "prompt_type": "caption"
   }
 ]

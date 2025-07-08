@@ -221,9 +221,11 @@ def run_optimized_inference(
     
     print(f"  🔗 Feature dtype: {image_features.dtype}, MM projector dtype: {next(mm_projector.parameters()).dtype}")
     
-    # Project features
+    # Project features with proper dtype matching
     with torch.no_grad():
-        image_features = mm_projector(image_features.to(torch.float32))  # Always use FP32 for projection
+        # Ensure input dtype matches MM projector dtype
+        mm_projector_dtype = next(mm_projector.parameters()).dtype
+        image_features = mm_projector(image_features.to(mm_projector_dtype))
     
     print(f"✓ MM projector loaded, features projected to {image_features.shape}")
     

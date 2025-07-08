@@ -198,11 +198,33 @@ python run_inference_fp16.py --subject 5 --samples 1 --prompt caption --precisio
 - MM Projector: ~0.01GB (FP32)
 - Total Peak: ~25.1GB
 
-### Timing:
+### Timing (Hybrid Mode):
 - Brain Processing: ~0.4s
 - Model Loading: ~110s (first time)
 - Inference per sample: ~108s
 - Total for 1 sample: ~220s
+
+### Performance Comparison:
+| Mode | Memory | Inference Time | Total Time | Quality |
+|------|--------|---------------|------------|---------|
+| **FP16** | 12.6GB | 1.00s | 15.3s | ✅ Good |
+| **Hybrid** | 25.1GB | 108s | 220s | ✅ Good |
+| **FP32** | ~25GB+ | ~108s+ | ~220s+ | ✅ Best |
+
+**Recommendation**: Use FP16 for fastest results, Hybrid for balanced performance
+
+## ADDITIONAL FIX: FP16 Dtype Mismatch
+**Problem**: FP16 mode failed with "mat1 and mat2 must have the same dtype" error
+**Root Cause**: MM projector was FP16 but input was forced to FP32
+**Solution**:
+```python
+# BEFORE (broken):
+image_features = mm_projector(image_features.to(torch.float32))
+
+# AFTER (fixed):
+mm_projector_dtype = next(mm_projector.parameters()).dtype
+image_features = mm_projector(image_features.to(mm_projector_dtype))
+```
 
 ## REMAINING MINOR WARNINGS
 These warnings are normal and don't affect functionality:
